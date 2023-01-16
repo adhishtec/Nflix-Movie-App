@@ -1,0 +1,122 @@
+.main-container {
+  background-color: #293462;
+  display: flex;
+  flex-direction: column;
+  .form-container {
+    margin: 30px;
+    h2 {
+      font-weight: bold;
+      text-align: center;
+      color: #f44336;
+    }
+
+    &__form {
+      display: flex;
+
+      width: 100%;
+
+      &--input {
+        display: flex;
+        column-gap: 5px;
+        align-items: center;
+        width: 100%;
+
+        .title-input {
+          -webkit-appearance: none;
+          outline: none;
+          width: 50%;
+          padding: 10px;
+          background-color: rgb(48, 47, 47);
+          border: 1px solid rgb(48, 47, 47);
+          color: antiquewhite;
+
+          &:focus {
+            border: 1px solid antiquewhite;
+          }
+        }
+
+        .submit-button {
+          all: unset;
+          width: 20%;
+          padding: 10px;
+          background-color: #fff80a;
+          color: #f44336;
+          cursor: pointer;
+          text-align: center;
+          border-radius: 5px;
+        }
+
+        .submit-button:disabled {
+          opacity: 0.6;
+          cursor: not-allowed;
+        }
+      }
+    }
+    select {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      padding: 10px;
+      width: 50%;
+      height: 50%;
+      background-color: #f44336;
+      color: #fff80a;
+    }
+  }
+
+  .movie-search-title {
+    margin: 0px 40px;
+    color: #f44336;
+  }
+
+  .movies-container {
+    display: grid;
+    grid-gap: 0.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+
+    .loader {
+      background-color: #293462;
+    }
+
+    .gallery-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 0.5rem;
+      text-align: center;
+      background-color: transparent;
+      color: #f44336;
+      border: 2px solid #f44336;
+      border-radius: 1%;
+
+      &__title {
+        margin: 10px;
+        font-size: 1.25rem;
+        font-weight: 400;
+      }
+
+      &__poster {
+        object-fit: cover;
+        &:hover {
+          cursor: pointer;
+          opacity: 0.6;
+        }
+      }
+
+      &__year {
+        margin: 5px;
+        font-size: 1rem;
+        font-weight: 100;
+      }
+    }
+  }
+
+  .movies-not-found {
+    margin: 30px;
+    font-size: 1.25rem;
+    color: #f44336;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+}

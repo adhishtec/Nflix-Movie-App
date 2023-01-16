@@ -1,0 +1,55 @@
+<div class="main-container">
+  <div class="form-container">
+    <h2>You can find for any movie here</h2>
+
+    <form
+      class="form-container__form"
+      [formGroup]="searchForm"
+      (ngSubmit)="searchMoviesByTitle()"
+    >
+      <div class="form-container__form--input">
+        <input
+          class="title-input"
+          type="text"
+          name="title"
+          placeholder="Enter Movie Title"
+          formControlName="title"
+        />
+        <br />
+        <button class="submit-button" [disabled]="!searchForm.valid">
+          Search
+        </button>
+      </div>
+      <select
+        class="form-container__form--select"
+        (change)="searchMoviesByYear($event)"
+        formControlName="year"
+      >
+        <option value="">Choose Year of Release</option>
+        <option *ngFor="let year of years" [ngValue]="year">
+          {{ year }}
+        </option>
+      </select>
+    </form>
+  </div>
+  <div class="movie-search-title">
+    Results for movie: {{ movieSearchTitle }}
+  </div>
+  <div class="movies-container" *ngIf="movies.length; else noMovieTemplate">
+    <div *ngIf="isLoading | async" class="loader"></div>
+    <figure *ngFor="let movie of moviesToDisplay" class="gallery-card">
+      <div class="gallery-card__title">{{ movie.Title }}</div>
+      <img
+        class="gallery-card__poster"
+        alt="Movie Poster"
+        src="{{ movie.Poster }}"
+        (error)="onImgError($event)"
+        (click)="goToImDbUrl(movie.imdbID)"
+      />
+      <div class="gallery-card__year">{{ movie.Year }}</div>
+    </figure>
+  </div>
+  <ng-template #noMovieTemplate>
+    <div class="movies-not-found">Movie Not Found !!</div>
+  </ng-template>
+</div>
